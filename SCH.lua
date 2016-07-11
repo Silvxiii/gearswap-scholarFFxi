@@ -87,13 +87,13 @@ function user_setup()
 
     send_command('bind ` input /ma Stun <t>; wait 0.5; input /p Casting STUN on <t>.')
 	send_command('bind ^` gs c toggle MagicBurst')
-	send_command('bind !` input /ma Drain <me>')
+	send_command('bind !` input /ma Drain <t>')
 	send_command('bind ^- gs c scholar light')
 	send_command('bind ^= gs c scholar dark')
 	send_command('bind delete gs c scholar speed')
 	send_command('bind Home gs c scholar duration')-- sleep en darks arts
 	send_command('bind End gs c scholar aoe')
-    send_command('bind !- input /ja "Sublimation" <me>; wait 0.5; input /echo Subli mation ')
+    send_command('bind !- input /ja "Sublimation" <me>; wait 0.5; input /echo Sublimation ')
 	send_command('bind != input /ma "Distract" <t>')
     select_default_macro_book()
 end
@@ -157,7 +157,7 @@ function init_gear_sets()
     body={ name="Merlinic Jubbah", augments={'"Fast Cast"+6','MND+5','"Mag.Atk.Bns."+10',}},
     hands={ name="Merlinic Dastanas", augments={'Attack+17','"Fast Cast"+6','INT+4','"Mag.Atk.Bns."+11',}},
     legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
-    feet={ name="Merlinic Crackows", augments={'Mag. Acc.+9','"Fast Cast"+6','"Mag.Atk.Bns."+13',}},
+    feet={ name="Merlinic Crackows", augments={'"Fast Cast"+7','INT+2','Mag. Acc.+2','"Mag.Atk.Bns."+12',}},
     neck="Baetyl Pendant",
     waist="Witful Belt",
     left_ear="Enchntr. Earring +1",
@@ -174,13 +174,13 @@ sets.precast.FC.Storm ={
     body={ name="Merlinic Jubbah", augments={'"Fast Cast"+6','MND+5','"Mag.Atk.Bns."+10',}},
     hands={ name="Merlinic Dastanas", augments={'Attack+17','"Fast Cast"+6','INT+4','"Mag.Atk.Bns."+11',}},
     legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
-    feet={ name="Merlinic Crackows", augments={'Mag. Acc.+9','"Fast Cast"+6','"Mag.Atk.Bns."+13',}},
+    feet={ name="Merlinic Crackows", augments={'"Fast Cast"+7','INT+2','Mag. Acc.+2','"Mag.Atk.Bns."+12',}},
     neck="Baetyl Pendant",
     waist="Cascade Belt",
     left_ear="Enchntr. Earring +1",
     right_ear="Loquac. Earring",
     left_ring="Rahab Ring",
-    right_ring="Etana Ring",
+    right_ring="prolix Ring",
     back={ name="Bookworm's Cape", augments={'INT+5','MND+4','Helix eff. dur. +19',}},
 }
 
@@ -205,9 +205,7 @@ sets.precast.FC.Storm ={
 	sets.precast.FC.Curaga = sets.precast.FC.Cure
 	
 	sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC, {waist="Siegel Sash"})
-
-    sets.midcast.Refresh = set_combine(sets.midcast['Enhancing Magic'], { waist="Gishdubar Sash",feet="Inspirited Boots"})
-
+  
 	sets.precast.FC['Elemental Magic'] = set_combine(sets.precast.FC, {neck="Baetyl Pendant"})
 
 	sets.precast.FC.Impact = set_combine(sets.precast.FC['Elemental Magic'], {head=empty,body="Twilight Cloak"})
@@ -287,41 +285,43 @@ sets.precast.FC.Storm ={
  
 	sets.midcast.Curaga = sets.midcast.Cure
 
-	sets.midcast.Regen={
+sets.midcast.Regen={
     main={ name="Akademos", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
     sub="Niobid Strap",
     ammo="Strobilus",
-    head="Arbatel Bonnet +1",
+    head={ name="Telchine Cap", augments={'Mag. Evasion+25','"Conserve MP"+3','Enh. Mag. eff. dur. +10',}},
     body={ name="Telchine Chas.", augments={'Evasion+19','"Cure" potency +4%','Enh. Mag. eff. dur. +8',}},
     hands={ name="Telchine Gloves", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','"Cure" potency +7%','Enh. Mag. eff. dur. +8',}},
     legs={ name="Telchine Braconi", augments={'Evasion+18','"Fast Cast"+5','Enh. Mag. eff. dur. +8',}},
     feet={ name="Telchine Pigaches", augments={'Accuracy+15 Attack+15','"Fast Cast"+4','Enh. Mag. eff. dur. +9',}},
     neck="Sanctity Necklace",
-    waist="Yamabuki-no-Obi",
-    left_ear="Etiolation Earring",
-    right_ear="Loquac. Earring",
+    waist="Luminary sash",
+    left_ear="Augment. Earring",
+    right_ear="Andoaa Earring",
     left_ring="Rahab Ring",
-    right_ring="Sangoma Ring",
-    back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}},
+    right_ring="Stikini Ring",
+    back="Lugh's Cape",
 }
 
-    sets.Refresh={
+  sets.midcast.Refresh={
     main={ name="Akademos", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
     sub="Niobid Strap",
     ammo="Pemphredo Tathlum",
-    head={ name="Amalric Coif", augments={'INT+10','Elem. magic skill +15','Dark magic skill +15',}},
-    body={ name="Witching Robe", augments={'MP+50','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Refresh"+1',}},
-    hands={ name="Peda. Bracers +1", augments={'Enh. "Tranquility" and "Equanimity"',}},
-    legs={ name="Lengo Pants", augments={'INT+10','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Refresh"+1',}},
+    head={ name="Telchine Cap", augments={'Mag. Evasion+25','"Conserve MP"+3','Enh. Mag. eff. dur. +10',}},
+    body={ name="Telchine Chas.", augments={'Evasion+19','"Cure" potency +4%','Enh. Mag. eff. dur. +8',}},
+    hands={ name="Telchine Gloves", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','"Cure" potency +7%','Enh. Mag. eff. dur. +8',}},
+    legs={ name="Telchine Braconi", augments={'Evasion+18','"Fast Cast"+5','Enh. Mag. eff. dur. +8',}},
     feet="Inspirited Boots",
     neck="Incanter's Torque",
     waist="Gishdubar Sash",
-    left_ear="Etiolation Earring",
-    right_ear="Loquac. Earring",
-    left_ring="Karieyh Ring",
-    right_ring="Sheltered Ring",
+    left_ear="Augment. Earring",
+    right_ear="Andoaa Earring",
+    left_ring="Fenrir Ring +1",
+    right_ring="Stikini Ring",
     back="Perimede Cape",
-}	
+}
+
+   
 	-- Enhancing Magic Sets
 	
 	sets.midcast['Enhancing Magic']={
@@ -335,27 +335,23 @@ sets.precast.FC.Storm ={
     feet={ name="Telchine Pigaches", augments={'Accuracy+15 Attack+15','"Fast Cast"+4','Enh. Mag. eff. dur. +9',}},
     neck="Incanter's Torque",
     waist="Cascade Belt",
-    left_ear="Digni. Earring",
-    right_ear="Augment. Earring",
+    left_ear="Augment. Earring",
+    right_ear="Andoaa Earring",
     left_ring="Etana Ring",
-    right_ring="Sangoma Ring",
+    right_ring="Stikini Ring",
     back="Perimede Cape",
 }
-
-	sets.midcast.Cursna = {
-		neck="Incanter's Torque",ring1="Haoma's Ring",ring2="Sirona's Ring",waist="Gishdubar Sash",}
-
-	sets.midcast.Stoneskin = set_combine(sets.midcast['Enhancing Magic'], {neck="Nodens Gorget",waist="Siegel Sash",legs="Doyen Pants"})
-
-	sets.midcast.Storm = set_combine(sets.midcast['Enhancing Magic'], {feet="Peda. Loafers +1"})
-
-	sets.midcast.Protect = {ring1="Sheltered Ring"}
+    sets.midcast.Haste = sets.midcast['Enhancing Magic']
+	sets.midcast.Cursna = {neck="Incanter's Torque",ring1="Haoma's Ring",ring2="Sirona's Ring",waist="Gishdubar Sash",}
+	sets.midcast.Stoneskin = set_combine(sets.midcast['Enhancing Magic'], {neck="Nodens Gorget",waist="Siegel Sash",legs="Shedir Seraweels"})
+    sets.midcast.Aquaveil = set_combine(sets.midcast['Enhancing Magic'], {head={ name="Amalric Coif", augments={'MP+60','INT+10','Enmity-5',}},waist="Emphatikos Rope",legs="Shedir Seraweels"})
+	sets.midcast.Storm = set_combine(sets.midcast['Enhancing Magic'], {feet="Peda. Loafers +1"})   
+	sets.midcast.Protect = set_combine(sets.midcast['Enhancing Magic'], {ring1="Sheltered Ring"})
 	sets.midcast.Protectra = sets.midcast.Protect
-	sets.midcast.Shell = {ring1="Sheltered Ring"}
-	sets.midcast.Shellra = sets.midcast.Shell
-	sets.midcast.Haste = sets.midcast['Enhancing Magic']
+	sets.midcast.Shell = set_combine(sets.midcast['Enhancing Magic'], {ring1="Sheltered Ring"})
+	sets.midcast.Shellra = sets.midcast.Shell	
 	sets.midcast.Erase = sets.midcast.FastRecast
-
+    sets.midcast.Phalanx =  sets.midcast['Enhancing Magic']
 
 	-- Custom spell classes
 	sets.midcast['Enfeebling Magic']={
@@ -368,12 +364,12 @@ sets.precast.FC.Storm ={
     legs={ name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
     feet={ name="Medium's Sabots", augments={'MP+25','"Conserve MP"+2',}},
     neck="Incanter's Torque",
-    waist="Casso Sash",
+    waist="Rumination Sash",
     left_ear="Barkaro. Earring",
     right_ear="Digni. Earring",
     left_ring="Globidonta Ring",
-    right_ring="Sangoma Ring",
-    back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}},
+    right_ring="Stikini Ring",
+    back="Lugh's Cape",
 }
 
 	
@@ -426,10 +422,10 @@ sets.precast.FC.Storm ={
     neck="Incanter's Torque",
     waist="Fucho-no-Obi",
     left_ear="Barkarole earring",
-    right_ear="Gwati Earring",
-    left_ring="Archon Ring",
-    right_ring="Evanescence Ring",
-    back="BookWorm's Cape",
+    right_ear="Digni. Earring",
+    left_ring="Evanescence Ring",
+    right_ring="Stikini Ring",
+    back="Lugh's Cape",
 }
 
     sets.midcast.Klimaform={
@@ -445,9 +441,9 @@ sets.precast.FC.Storm ={
     waist="Casso Sash",
     left_ear="Dark Earring",
     right_ear="Barkaro. Earring",
-    left_ring="Archon Ring",
-    right_ring="Evanescence Ring",
-    back={ name="Bookworm's Cape", augments={'INT+5','MND+4','Helix eff. dur. +19',}},
+    left_ring="Evanescence Ring",
+    right_ring="Stikini Ring",
+    back="BookWorm's Cape",
 }
 	
 	sets.midcast.Aspir = sets.midcast.Drain
@@ -466,15 +462,15 @@ sets.precast.FC.Storm ={
     left_ear="Digni. Earring",
     right_ear="Barkaro. Earring",
     left_ring="Fenrir Ring +1",
-    right_ring="Fenrir Ring +1",
-    back={ name="Bookworm's Cape", augments={'INT+5','MND+4','Helix eff. dur. +19',}},
+    right_ring="Stikini Ring",
+    back="BookWorm's Cape",
 }
 	sets.midcast.Stun.Resistant = set_combine(sets.midcast.Stun, {})
 
 
 	 --Elemental Magic sets are default for handling low-tier nukes.
 	sets.midcast['Elemental Magic']={
-    main={ name="Akademos", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+      main={ name="Akademos", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
     sub="Niobid Strap",
     ammo="Pemphredo Tathlum",
     head={ name="Merlinic Hood", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','"Conserve MP"+1','INT+6','Mag. Acc.+15','"Mag.Atk.Bns."+13',}},
@@ -483,12 +479,12 @@ sets.precast.FC.Storm ={
     legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','Magic Damage +13','INT+10','"Mag.Atk.Bns."+11',}},
     feet={ name="Merlinic Crackows", augments={'Mag. Acc.+21 "Mag.Atk.Bns."+21','"Occult Acumen"+11','INT+4','Mag. Acc.+5','"Mag.Atk.Bns."+13',}},
     neck="Saevus Pendant +1",
-    waist="Yamabuki-no-Obi",
+    waist="Refoccilation Stone",
     left_ear="Barkaro. Earring",
     right_ear="Friomisi Earring",
     left_ring="Fenrir Ring +1",
     right_ring="Fenrir Ring +1",
-    back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}},
+    back="Lugh's Cape",
 }
 
 	sets.midcast['Elemental Magic'].Resistant =set_combine( sets.midcast['Elemental Magic'].HighTierNuke,{ neck="Sanctity Necklace"})
@@ -509,10 +505,9 @@ sets.precast.FC.Storm ={
     right_ear="Friomisi Earring",
     left_ring="Shiva Ring +1",
     right_ring="Shiva Ring +1",
-    back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}},
+    back="Lugh's Cape",
 }
-	sets.midcast.Impact = 
-	{ 
+	sets.midcast.Impact = { 
 	  main="Akademos",
     sub="Niobid Strap",
     ammo="Seraphic Ampulla",
@@ -527,7 +522,7 @@ sets.precast.FC.Storm ={
     right_ear="Digni. Earring",
     left_ring="Petrov Ring",
     right_ring="Rajas Ring",
-    back="Izdubar Mantle",
+     back="Lugh's Cape",
 	}
 		
 	sets.midcast.Helix={
@@ -545,7 +540,7 @@ sets.precast.FC.Storm ={
     right_ear="Barkaro. Earring",
     left_ring="Shiva Ring +1",
     right_ring="Shiva Ring +1",
-    back={ name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}},
+    back="Lugh's Cape",
 }
 	sets.midcast.Noctohelix = set_combine(sets.midcast.Helix, {head="Pixie Hairpin +1"})
 
@@ -593,21 +588,21 @@ sets.precast.FC.Storm ={
 }
 
 	sets.idle.Field ={
-    main="Akademos",
+  main={ name="Akademos", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
     sub="Niobid Strap",
-    ammo="Pemphredo Tathlum",
+    ammo="Strobilus",
     head="Befouled Crown",
-    body="Witching Robe",
+    body={ name="Witching Robe", augments={'MP+50','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Refresh"+1',}},
     hands="Arbatel Bracers +1",
-    legs="Lengo Pants",
+    legs={ name="Lengo Pants", augments={'INT+10','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Refresh"+1',}},
     feet="Regal Pumps +1",
     neck="Sanctity Necklace",
-    waist="Fucho-no-Obi",
-    left_ear="Etiolation Earring", 
+    waist="Luminary Sash",
+    left_ear="Mendi. Earring",
     right_ear="Loquac. Earring",
-    left_ring="Karieyh Ring",
-    right_ring="Sheltered Ring",
-    back="Izdubar Mantle",
+    left_ring="Fenrir Ring +1",
+    right_ring="Fenrir Ring +1",
+      back="Lugh's Cape",
 }	
 
 	sets.idle.Weak = sets.idle.Field
@@ -647,9 +642,27 @@ sets.precast.FC.Storm ={
     right_ear="Infused Earring",
     left_ring="Archon Ring",
     right_ring="Defending Ring",body={ name="Merlinic Jubbah", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','Magic burst mdg.+8%','INT+6','Mag. Acc.+13','"Mag.Atk.Bns."+15',}},
-    legs="Merlinic Shalwar",
+    legs={ name="Merlinic Shalwar", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst mdg.+11%','INT+4',}},
     back="Solemnity Cape",
 }
+
+  sets.Refresh={
+    main={ name="Akademos", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+    sub="Niobid Strap",
+    ammo="Pemphredo Tathlum",
+    head={ name="Amalric Coif", augments={'INT+10','Elem. magic skill +15','Dark magic skill +15',}},
+    body={ name="Witching Robe", augments={'MP+50','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Refresh"+1',}},
+    hands={ name="Peda. Bracers +1", augments={'Enh. "Tranquility" and "Equanimity"',}},
+    legs={ name="Lengo Pants", augments={'INT+10','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Refresh"+1',}},
+    feet="Inspirited Boots",
+    neck="Incanter's Torque",
+    waist="Gishdubar Sash",
+    left_ear="Etiolation Earring",
+    right_ear="Loquac. Earring",
+    left_ring="Karieyh Ring",
+    right_ring="Sheltered Ring",
+    back="Perimede Cape",
+}	
 
 	sets.Kiting = {feet="Herald's Gaiters"}
 
@@ -678,7 +691,7 @@ sets.precast.FC.Storm ={
     right_ear="Digni. Earring",
     left_ring="Petrov Ring",
     right_ring="Rajas Ring",
-    back="Relucent Cape",
+    back="Izdubar Mantle",
 }
 
 
@@ -880,10 +893,17 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         equip(sets.magic_burst)
         end
 	end
+	if spell.type == "WeaponSkill" then
+      if spell.element == world.weather_element or spell.element == world.day_element then
+        equip({waist="Hachirin-no-Obi"})
+        add_to_chat(8,'----- Obi Equipped. -----')
+      end
+    end
 end
 
-function job_aftercast(spell)  
-    if spell.english == 'Sleep' then
+
+function job_aftercast(spell, action, spellMap, eventArgs)
+  if spell.english == 'Sleep' then
         send_command('@wait 50;input /echo ------- '..spell.english..' is wearing off in 10 seconds -------')
     elseif spell.english == 'Sleep II' or spell.english == 'Sleepga II' then
         send_command('@wait 80;input /echo ------- '..spell.english..' is wearing off in 10 seconds -------')
@@ -898,10 +918,6 @@ function job_aftercast(spell)
     send_command('timers c "Break" 30 down spells/00255.png')
   end
 	buffWatcher.casting = false
-
-end
-function job_aftercast(spell, action, spellMap, eventArgs)
-
 -- helix timers
   if (not spell.interrupted) then
     if info.Helix:contains(spell.english) then
@@ -911,7 +927,24 @@ function job_aftercast(spell, action, spellMap, eventArgs)
       createTimerModusVeritas()
     end
   end -- end of helix timers 
-  
+   -- soloSC stuff
+  if (soloSC.active==true) and (spell.english==soloSC.step.spell or spell.english=='Immanence') then
+    if (spell.english==soloSC.step.spell) then
+      if (not spell.interrupted) then
+        soloSkillchainStep()
+      else
+        soloSkillchainAbort('interrupted')
+      end
+    end
+    
+    if (spell.english=='Immanence') then
+      state.Buff["Immanence"] = buffactive["Immanence"] or false
+      if (not state.Buff["Immanence"]) and spell.interrupted then
+        soloSkillchainAbort('Immanence failed')
+      end
+    end
+  end
+  -- end of soloSC stuff
 end -- end of the function
 -------------------------------------------------------------------------------------------------------------------
 -- Job-specific hooks for non-casting events.
@@ -940,6 +973,9 @@ function job_state_change(stateField, newValue, oldValue)
             enable('main','sub','range')
         end
     end
+	if (new_status=='resting') and (soloSC.active==true) then
+    soloSkillchainAbort()
+  end
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -1017,15 +1053,18 @@ end
 
 -- Called for direct player commands.
 function job_self_command(cmdParams, eventArgs)
-    if cmdParams[1] == 'soloSC' then
+
+   if cmdParams[1] == 'soloSC' then
     if not cmdParams[2] or not cmdParams[3] then
       errlog('missing required parameters for function soloSkillchain')
       return
     else
-      soloSkillchain(cmdParams[2],cmdParams[3],cmdParams[4])
+      soloSkillchain(cmdParams[2],cmdParams[3],cmdParams[4],cmdParams[5])
     end
-end
-	  
+  end
+  if cmdParams[1] == 'stopSoloSC' then
+    soloSkillchainAbort('abort from command')
+  end	  
     if cmdParams[1]:lower() == 'scholar' then
         handle_strategems(cmdParams)
         eventArgs.handled = true
@@ -1037,6 +1076,7 @@ end
   if cmdParams[1] == 'stopBuffWatcher' then
 	  stopBuffWatcher()
   end
+   
 -- maybe some other stuff
 end
 
@@ -1107,7 +1147,7 @@ function display_current_caster_state()
 	msg = msg .. 'Idle ['..state.IdleMode.value..'], Casting ['..state.CastingMode.value..']'
 
 	add_to_chat(122, msg)
-	local currentStrats = get_current_strategem_count()
+	local currentStrats = getNbStratagems()
 	local arts
 	if buffactive['Light Arts'] or buffactive['Addendum: White'] then
 		arts = 'Light Arts'
@@ -1129,7 +1169,7 @@ function handle_strategems(cmdParams)
 		return
 	end
 
-	local currentStrats = get_current_strategem_count()
+	local currentStrats = getNbStratagems()
 	local newStratCount = currentStrats - 1
 	local strategem = cmdParams[2]:lower()
 	
@@ -1214,16 +1254,12 @@ function handle_strategems(cmdParams)
 	end
 end
 
-function get_current_strategem_count()
+function getNbStratagems()
 	local allRecasts = windower.ffxi.get_ability_recasts()
 	local stratsRecast = allRecasts[231]
-
 	local maxStrategems = math.floor(player.main_job_level + 10) / 20
-
 	local fullRechargeTime = 5*33
-
 	local currentCharges = math.floor(maxStrategems - maxStrategems * stratsRecast / fullRechargeTime)
-	
 	return currentCharges
 end
 
